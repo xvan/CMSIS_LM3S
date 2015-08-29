@@ -54,15 +54,15 @@ target remote localhost:1234
 ```
 
 ##How do I link against the DSP_LIB?
-You will need to edit your project *Makefile*:
+You need to edit your project's *Makefile*:
 
 1. Modify the `VPATH` variable on the project to include the required DSP_LIB subdirectories.
 
-2. Add the needed object modules as a requirement for the <proyect>.afx task  
+2. Add the needed objects as a requirement for the <proyect>.axf task  
 Make will automagically generate them.
 
 **Example:** *examples/arm_fir_example/Makefile*  
-Relevant code lines:
+Relevant code lines for *arm_fir_f32.c* and *arm_fir_init_f32.c*:
 ```
 VPATH=../../CMSIS/DSP_Lib/Source/FilteringFunctions/
 ```
