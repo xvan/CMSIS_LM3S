@@ -14,7 +14,7 @@ This was tested with:
 * newlib v2.1
 * arm-none-eabi-gcc v4.8.2
 * arm-none-eabi-gdb v7.6.50
-* QUEMU v2.0.0
+* QEMU v2.0.0
 
 All these tools are available on debian/ubuntu standard repositories.
 
