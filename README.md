@@ -61,7 +61,7 @@ You will need to edit your project *Makefile*:
 2. Add the needed object modules as a requirement for the <proyect>.afx task  
 Make will automagically generate them.
 
-###Example: *examples/arm_fir_example/Makefile*
+**Example:** *examples/arm_fir_example/Makefile*  
 Relevant code lines:
 ```
 VPATH=../../CMSIS/DSP_Lib/Source/FilteringFunctions/
@@ -70,7 +70,6 @@ VPATH=../../CMSIS/DSP_Lib/Source/FilteringFunctions/
 ```
 ${COMPILER}/arm_fir_example_f32.axf: ${COMPILER}/arm_fir_f32.o
 ${COMPILER}/arm_fir_example_f32.axf: ${COMPILER}/arm_fir_init_f32.o
-
 ```
 
 ##Licences and stuff:
