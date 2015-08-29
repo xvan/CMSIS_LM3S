@@ -43,7 +43,7 @@ include ${ROOT}/makedefs
 #
 # Where to find source files that do not live in this directory.
 #
-VPATH=../../CMSIS/Include
+VPATH=../../CMSIS/DSP_Lib/Source/FilteringFunctions/
 VPATH+=../../lm3s
 
 #
