@@ -73,7 +73,7 @@ ${COMPILER}/arm_fir_example_f32.axf: ${COMPILER}/arm_fir_init_f32.o
 ```
 
 ##Licences and stuff:
-Linker, startup and configuration files for the lm3s where taken 
+Linker, startup and configuration files for the lm3s were taken 
 from *Stellaris CMSIS Package*  
 Makefiles where also taken from *Stellaris CMSIS Package* and slightly modified
 to work with CMSIS DSP_Lib examples  
