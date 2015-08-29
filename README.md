@@ -82,6 +82,6 @@ All conserve the original LMI lincese on the file header.
 ./CMSIS/DSP_Lib and ./CMSIS/Include files are released under the terms of the BSD licence.
 
 UART hello world and QEMU debug instructions were adapted from [this blog post]
-(https://balau82.wordpress.com/2010/02/28/hello-world-for-bare-metal-arm-using-qemu/)
+(https://balau82.wordpress.com/2010/02/28/hello-world-for-bare-metal-arm-using-qemu/).
 
 For everything else send me a cookie.
