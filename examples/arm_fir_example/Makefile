@@ -43,7 +43,7 @@ include ${ROOT}/makedefs
 #
 # Where to find source files that do not live in this directory.
 #
-VPATH=../../core
+VPATH=../../CMSIS/Include
 VPATH+=../../lm3s
 
 #
@@ -51,7 +51,7 @@ VPATH+=../../lm3s
 #
 IPATH=.
 IPATH+=../..
-IPATH+=../../core
+IPATH+=../../CMSIS/Include
 
 #
 # The default rule, which causes the CMSIS arm_fir_example_f32 example to be built.

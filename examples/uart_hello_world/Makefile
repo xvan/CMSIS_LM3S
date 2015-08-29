@@ -43,7 +43,7 @@ include ${ROOT}/makedefs
 #
 # Where to find source files that do not live in this directory.
 #
-VPATH=../../core
+VPATH=../../CMSIS/Include
 VPATH+=../../lm3s
 
 #
@@ -51,7 +51,7 @@ VPATH+=../../lm3s
 #
 IPATH=.
 IPATH+=../..
-IPATH+=../../core
+IPATH+=../../CMSIS/Include
 
 #
 # The default rule, which causes the CMSIS uart_hello_world example to be built.
@@ -75,7 +75,6 @@ ${COMPILER}:
 # Rules for building the CMSIS uart_hello_world example.
 #
 ${COMPILER}/uart_hello_world.axf: ${COMPILER}/uart_hello_world.o
-#${COMPILER}/uart_hello_world.axf: ${COMPILER}/core_cm3.o
 ${COMPILER}/uart_hello_world.axf: ${COMPILER}/startup_${COMPILER}.o
 ${COMPILER}/uart_hello_world.axf: ${COMPILER}/system_lm3s.o
 ifeq (${COMPILER}, gcc)

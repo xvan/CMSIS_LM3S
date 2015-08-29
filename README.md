@@ -7,7 +7,7 @@ This is a **LM3S Cortex-M3 Series** startup project using *CMSIS DSP_Lib*,
 
 ##Why the LM3S Series?
 At this time is the only **Cortex-M3** supported by **QEMU** so this is
-intended as a ready to run project meanwhile you get real development board.
+intended as a ready to run project meanwhile you get a real development board.
 
 ##What do I need?
 This was tested with:
@@ -19,7 +19,7 @@ This was tested with:
 All these tools are available on debian/ubuntu standard repositories.
 
 ##How do I compile this?
-Edit *makedefs* file to point to your toolchain
+Edit *makedefs* file to point to your toolchain, then execute:
 ```
 make
 ```
@@ -32,6 +32,11 @@ qemu-system-arm -M lm3s811evb -nographic -kernel uart_hello_world.bin
 `Ctrl+a x` to quit QEMU
 
 ##How do I debug this with GDB?
+Make with the *DEBUG symbols*
+```
+make clean
+make DEBUG=1
+```
 Run QEMU stopped on the *Reset_Handler* with a dubugger server:
 ```
 cd ./examples/uart_hello_world/gcc
@@ -61,4 +66,3 @@ UART hello world and QEMU debug instructions were adapted from [this blog post]
 (https://balau82.wordpress.com/2010/02/28/hello-world-for-bare-metal-arm-using-qemu/)
 
 For everything else send me a cookie.
-##
