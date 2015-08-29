@@ -25,7 +25,7 @@
 #
 #******************************************************************************
 
-DIRS=arm_fir_example uart
+DIRS=arm_fir_example uart_hello_world
 
 all:
 	@for i in ${DIRS};                  \
