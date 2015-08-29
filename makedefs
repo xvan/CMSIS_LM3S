@@ -23,6 +23,14 @@
 # 
 # This is part of revision 32 of the Stellaris CMSIS Package.
 #
+#
+#******************************************************************************
+
+
+#******************************************************************************
+#
+# Modified by Juan Antonio Zuloaga for compiling CMSIS V4.3.0 with DSP_LIB
+#
 #******************************************************************************
 
 #******************************************************************************
@@ -225,137 +233,4 @@ ${COMPILER}/%.axf:
 	echo "ALL IS GOOD, CHILL OUT"
 endif
 
-#******************************************************************************
-#
-# Definitions for using Sourcery G++.
-#
-#******************************************************************************
-ifeq (${COMPILER}, sourcerygxx)
 
-#
-# The command for calling the compiler.
-#
-CC=arm-stellaris-eabi-gcc
-
-#
-# The flags passed to the assembler.
-#
-AFLAGS=-mthumb         \
-       -mcpu=cortex-m3 \
-       -MD
-
-#
-# The flags passed to the compiler.
-#
-CFLAGS=-mthumb             \
-       -mcpu=cortex-m3     \
-       -O2                 \
-       -ffunction-sections \
-       -fdata-sections     \
-       -MD                 \
-       -std=c99            \
-       -Wall               \
-       -pedantic           \
-       -DPART_${PART}      \
-       -c
-
-#
-# The command for calling the library archiver.
-#
-AR=arm-stellaris-eabi-ar
-
-#
-# The command for calling the linker.
-#
-LD=arm-stellaris-eabi-gcc
-
-#
-# The flags passed to the linker.
-#
-LDFLAGS=-mthumb           \
-        -mcpu=cortex-m3   \
-        -Wl,--gc-sections
-
-#
-# The command for extracting images from the linked executables.
-#
-OBJCOPY=arm-stellaris-eabi-objcopy
-
-#
-# Tell the compiler to include debugging information if the DEBUG environment
-# variable is set.
-#
-ifdef DEBUG
-CFLAGS+=-g -D DEBUG
-endif
-
-#
-# Add the tool specific CFLAGS.
-#
-CFLAGS+=${CFLAGSsourcerygxx}
-
-#
-# Add the include file paths to AFLAGS and CFLAGS.
-#
-AFLAGS+=${patsubst %,-I%,${subst :, ,${IPATH}}}
-CFLAGS+=${patsubst %,-I%,${subst :, ,${IPATH}}}
-
-#
-# The rule for building the object file from each C source file.
-#
-${COMPILER}/%.o: %.c
-	@if [ 'x${VERBOSE}' = x ];                            \
-	 then                                                 \
-	     echo "  CC    ${<}";                             \
-	 else                                                 \
-	     echo ${CC} ${CFLAGS} -D${COMPILER} -o ${@} ${<}; \
-	 fi
-	@${CC} ${CFLAGS} -D${COMPILER} -o ${@} ${<}
-ifneq ($(findstring CYGWIN, ${os}), )
-	@sed -i -r 's/ ([A-Za-z]):/ \/cygdrive\/\1/g' ${@:.o=.d}
-endif
-
-#
-# The rule for building the object file from each assembly source file.
-#
-${COMPILER}/%.o: %.S
-	@if [ 'x${VERBOSE}' = x ];                               \
-	 then                                                    \
-	     echo "  AS    ${<}";                                \
-	 else                                                    \
-	     echo ${CC} ${AFLAGS} -D${COMPILER} -o ${@} -c ${<}; \
-	 fi
-	@${CC} ${AFLAGS} -D${COMPILER} -o ${@} -c ${<}
-ifneq ($(findstring CYGWIN, ${os}), )
-	@sed -i -r 's/ ([A-Za-z]):/ \/cygdrive\/\1/g' ${@:.o=.d}
-endif
-
-#
-# The rule for creating an object library.
-#
-${COMPILER}/%.a:
-	@if [ 'x${VERBOSE}' = x ];     \
-	 then                          \
-	     echo "  AR    ${@}";      \
-	 else                          \
-	     echo ${AR} -cr ${@} ${^}; \
-	 fi
-	@${AR} -cr ${@} ${^}
-
-#
-# The rule for linking the application.
-#
-${COMPILER}/%.axf:
-	@if [ 'x${VERBOSE}' = x ];                                              \
-	 then                                                                   \
-	     echo "  LD    ${@}";                                               \
-	 else                                                                   \
-	     echo ${LD} -T ${SCATTERsourcerygxx_${notdir ${@:.axf=}}}           \
-	          ${LDFLAGSsourcerygxx_${notdir ${@:.axf=}}} ${LDFLAGS} -o ${@} \
-	          $(filter %.o %.a, ${^});                                      \
-	 fi;                                                                    \
-	${LD} -T ${SCATTERsourcerygxx_${notdir ${@:.axf=}}}                     \
-	      ${LDFLAGSsourcerygxx_${notdir ${@:.axf=}}} ${LDFLAGS} -o ${@}     \
-	      $(filter %.o %.a, ${^})
-	@${OBJCOPY} -O binary ${@} ${@:.axf=.bin}
-endif

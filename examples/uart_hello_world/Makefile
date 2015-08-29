@@ -43,8 +43,7 @@ include ${ROOT}/makedefs
 #
 # Where to find source files that do not live in this directory.
 #
-VPATH=../../CMSIS/Include
-VPATH+=../../lm3s
+VPATH=../../lm3s
 
 #
 # Where to find header files that do not live in the source directory.

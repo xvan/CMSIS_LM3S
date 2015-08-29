@@ -74,12 +74,17 @@ ${COMPILER}:
 # Rules for building the CMSIS arm_fir_example_f32 example.
 #
 ${COMPILER}/arm_fir_example_f32.axf: ${COMPILER}/arm_fir_example_f32.o
-${COMPILER}/arm_fir_example_f32.axf: ${COMPILER}/arm_fir_f32.o
-${COMPILER}/arm_fir_example_f32.axf: ${COMPILER}/arm_fir_init_f32.o
 ${COMPILER}/arm_fir_example_f32.axf: ${COMPILER}/arm_fir_data.o
 ${COMPILER}/arm_fir_example_f32.axf: ${COMPILER}/math_helper.o
 ${COMPILER}/arm_fir_example_f32.axf: ${COMPILER}/startup_${COMPILER}.o
 ${COMPILER}/arm_fir_example_f32.axf: ${COMPILER}/system_lm3s.o
+
+#
+# ADD YOUR REQUIRED DSP_LIB MODULES HERE
+#
+${COMPILER}/arm_fir_example_f32.axf: ${COMPILER}/arm_fir_f32.o
+${COMPILER}/arm_fir_example_f32.axf: ${COMPILER}/arm_fir_init_f32.o
+
 ifeq (${COMPILER}, gcc)
 ${COMPILER}/arm_fir_example_f32.axf: arm_fir_example_f32.ld
 endif
