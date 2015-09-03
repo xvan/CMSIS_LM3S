@@ -27,7 +27,7 @@ make
 ##How do I run this on QEMU?
 ```
 cd ./examples/uart_hello_world/gcc
-qemu-system-arm -M lm3s811evb -nographic -kernel uart_hello_world.bin
+qemu-system-arm -M lm3s6965evb -nographic -kernel uart_hello_world.bin
 ```
 `Ctrl+a x` to quit QEMU
 
@@ -40,7 +40,7 @@ make DEBUG=1
 Run QEMU stopped on the *Reset_Handler* with a dubugger server:
 ```
 cd ./examples/uart_hello_world/gcc
-qemu-system-arm -M lm3s811evb -nographic -kernel uart_hello_world.bin -s -S
+qemu-system-arm -M lm3s6965evb -nographic -kernel uart_hello_world.bin -s -S
 ```
 On another terminal connect GDB to QEMU:
 ```
